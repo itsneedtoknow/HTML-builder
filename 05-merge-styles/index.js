@@ -23,24 +23,15 @@ fs.readdir(path.join(__dirname, 'styles'), (err, files)=>{
                 
                 if(fileExt === '.css'){
 
-
                     let fileContent = fs.readFile(path.join(__dirname, 'styles', file),'utf8', (err, data)=>{
 
-                        if (err) throw err;                
+                        if (err) throw err;
 
                     fs.appendFile(path.join(__dirname, 'project-dist', 'bundle.css'), data, (err)=>{
                         if (err) throw err;
-                        
                     } )
-
-                        
                     });
-                    
                 }
-            
-
         })
-    
-    
 });
 })
