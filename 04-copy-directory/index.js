@@ -9,9 +9,10 @@ fs.readdir(path.join(__dirname, 'files'), (err, files) =>{
     fs.access(path.join(__dirname, 'filescopy'), err =>{
 
         if (err && err.code === 'ENOENT') {
+            console.log('no folder')
             fs.mkdir(path.join(__dirname, 'filescopy'), err=>{
                 if (err) throw err;
-            });
+            });}
 
             files.forEach(file =>{
             fs.stat(path.join(__dirname, 'files', file), (err, stat) =>{
@@ -19,13 +20,14 @@ fs.readdir(path.join(__dirname, 'files'), (err, files) =>{
             if (stat.isFile()){
             fs.copyFile(path.join(__dirname, 'files', file), path.join(__dirname, 'filescopy', file), err =>{
             if(err) {throw err;}
+            console.log('copied')
             });
         
              }
             })
 
         })
-        }
+        
         
     })
     
